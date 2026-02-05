@@ -35,6 +35,7 @@ function rehypeCollapsibleCode() {
 }
 
 const postsDirectory = path.join(process.cwd(), 'public/posts');
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || (process.env.GITHUB_ACTIONS ? '/My-Blogs' : '');
 
 export interface PostData {
     id: string;
@@ -126,11 +127,10 @@ export async function getPostData(slug: string): Promise<PostData> {
     // Rewrite relative image paths to include the folder path
     const relativeFolder = path.relative(postsDirectory, path.dirname(file)).replace(/\\/g, '/');
     const folderPrefix = relativeFolder ? `/posts/${relativeFolder}/` : '/posts/';
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
     contentHtml = contentHtml.replace(/src="([^"]+)"/g, (match, src) => {
         if (!src.startsWith('http') && !src.startsWith('/')) {
-            return `src="${basePath}${folderPrefix}${src}"`;
+            return `src="${BASE_PATH}${folderPrefix}${src}"`;
         }
         return match;
     });
@@ -190,8 +190,7 @@ export function getSortedPostsData(): PostData[] {
             if (!img.startsWith('http') && !img.startsWith('/')) {
                 const relativeFolder = path.relative(postsDirectory, path.dirname(file)).replace(/\\/g, '/');
                 const folderPrefix = relativeFolder ? `/posts/${relativeFolder}/` : '/posts/';
-                const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-                return `${basePath}${folderPrefix}${img}`;
+                return `${BASE_PATH}${folderPrefix}${img}`;
             }
             return img;
         };
