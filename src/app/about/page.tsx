@@ -26,7 +26,7 @@ export default function About() {
 
                 <h2>Contact</h2>
                 <p>
-                    You can find me on Twitter, Discord, and LinkedIn.
+                    You can find me on Discord, and LinkedIn for now!.
                     Check the sidebar for links!
                 </p>
             </div>
