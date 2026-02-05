@@ -12,7 +12,7 @@ import { visit } from 'unist-util-visit';
 function rehypeCollapsibleCode() {
     return (tree: any) => {
         visit(tree, 'element', (node, index, parent) => {
-            if (node.tagName === 'pre') {
+            if (node.tagName === 'pre' && parent && typeof index === 'number') {
                 if (parent.tagName === 'details') return;
                 const details = {
                     type: 'element',
