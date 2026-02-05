@@ -190,7 +190,8 @@ export function getSortedPostsData(): PostData[] {
             if (!img.startsWith('http') && !img.startsWith('/')) {
                 const relativeFolder = path.relative(postsDirectory, path.dirname(file)).replace(/\\/g, '/');
                 const folderPrefix = relativeFolder ? `/posts/${relativeFolder}/` : '/posts/';
-                return `${folderPrefix}${img}`;
+                const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+                return `${basePath}${folderPrefix}${img}`;
             }
             return img;
         };
