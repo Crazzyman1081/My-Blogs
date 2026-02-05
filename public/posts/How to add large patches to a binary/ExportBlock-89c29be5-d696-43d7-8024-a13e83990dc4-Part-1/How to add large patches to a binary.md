@@ -20,7 +20,7 @@ the loop is pretty simple
 
 but as you can see there is no space to write our own code to as we can see here
 
-![image.png](image%201.png)
+![image.png](yes.png)
 
 so basically we can patch the `call rax` to just call our own function in the new segment and we can place the call rax inside of our function so there is no harm to the normal execution of the program
 so our function is just a continuation of that function and our function just does
