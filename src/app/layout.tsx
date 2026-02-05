@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "CTF Writeups",
   description: "Reverse Engineering & CTF Writeups",
   icons: {
-    icon: '/pfp.jpg',
+    icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/pfp.jpg`,
   },
 };
 

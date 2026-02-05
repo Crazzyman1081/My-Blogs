@@ -12,7 +12,10 @@ const Sidebar = () => {
         <aside className={styles.sidebar}>
             <div className={styles.profile}>
                 <div className={styles.avatarContainer}>
-                    <img src="/pfp.jpg" alt="Shona" className={styles.avatar} />
+                    <img
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/pfp.jpg`}
+                        className={styles.avatar}
+                    />
                 </div>
                 <div className={styles.profileInfo}>
                     <h2>Crazzyman1081</h2>
