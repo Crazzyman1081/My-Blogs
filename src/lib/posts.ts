@@ -48,7 +48,7 @@ export interface PostData {
     [key: string]: any;
 }
 
-export function getSortedPostsData(): PostData[] {
+export function getAllPostIds() {
     if (!fs.existsSync(postsDirectory)) {
         return [];
     }
@@ -66,14 +66,6 @@ export function getSortedPostsData(): PostData[] {
     const filePaths = getFiles(postsDirectory);
 
     return filePaths.filter(file => file.endsWith('.md')).map(file => {
-        // Get relative path from postsDirectory to use as slug
-        const relativePath = path.relative(postsDirectory, file);
-        // Remove extension and replace path separators with something URL safe if needed
-        // For now, we'll just use the filename without extension if it's unique enough,
-        // or the full relative path. Let's use the filename for simplicity if flat,
-        // or the directory name if it's index.md.
-        // Given the "Notion export" usually creates "My Page/My Page.md" or "My Page.md"
-
         // Simple approach: Slug is the filename without extension
         const fileName = path.basename(file, '.md');
         return {
