@@ -35,7 +35,7 @@ function rehypeCollapsibleCode() {
 }
 
 const postsDirectory = path.join(process.cwd(), 'public/posts');
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || (process.env.GITHUB_ACTIONS ? '/My-Blogs' : '');
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export interface PostData {
     id: string;

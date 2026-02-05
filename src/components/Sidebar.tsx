@@ -7,7 +7,7 @@ import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
     const pathname = usePathname();
-    const basePath = process.env.NODE_ENV === 'production' ? '/My-Blogs' : '';
+    const basePath = '';
 
     return (
         <aside className={styles.sidebar}>

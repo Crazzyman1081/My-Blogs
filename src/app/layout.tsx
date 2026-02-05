@@ -5,7 +5,7 @@ import "./code-styles.css";
 import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
-const basePath = process.env.NODE_ENV === 'production' ? '/My-Blogs' : '';
+const basePath = '';
 
 export const metadata: Metadata = {
   title: "CTF Writeups",
