@@ -2,12 +2,23 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaFlag, FaHome, FaUserSecret, FaUsers, FaBook, FaPenNib } from 'react-icons/fa';
 import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
     const pathname = usePathname();
     const basePath = '';
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const closeMenu = () => {
+        setIsOpen(false);
+    }
 
     return (
         <aside className={styles.sidebar}>
@@ -25,17 +36,24 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <nav className={styles.nav}>
-                <Link href="/" className={`${styles.navItem} ${pathname === '/' ? styles.active : ''}`}>
+            {/* Hamburger Icon */}
+            <button className={styles.hamburger} onClick={toggleMenu} aria-label="Toggle menu">
+                <span style={{ transform: isOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }}></span>
+                <span style={{ opacity: isOpen ? 0 : 1 }}></span>
+                <span style={{ transform: isOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }}></span>
+            </button>
+
+            <nav className={`${styles.nav} ${isOpen ? styles.open : ''}`}>
+                <Link href="/" className={`${styles.navItem} ${pathname === '/' ? styles.active : ''}`} onClick={closeMenu}>
                     <span className={styles.icon}><FaHome /></span> Home
                 </Link>
-                <Link href="/writeups" className={`${styles.navItem} ${pathname === '/writeups' ? styles.active : ''}`}>
+                <Link href="/writeups" className={`${styles.navItem} ${pathname === '/writeups' ? styles.active : ''}`} onClick={closeMenu}>
                     <span className={styles.icon}><FaBook /></span> Writeups
                 </Link>
-                <Link href="/blogs" className={`${styles.navItem} ${pathname === '/blogs' ? styles.active : ''}`}>
+                <Link href="/blogs" className={`${styles.navItem} ${pathname === '/blogs' ? styles.active : ''}`} onClick={closeMenu}>
                     <span className={styles.icon}><FaPenNib /></span> Blogs
                 </Link>
-                <Link href="/about" className={`${styles.navItem} ${pathname === '/about' ? styles.active : ''}`}>
+                <Link href="/about" className={`${styles.navItem} ${pathname === '/about' ? styles.active : ''}`} onClick={closeMenu}>
                     <span className={styles.icon}><FaUserSecret /></span> About Me
                 </Link>
             </nav>

@@ -38,6 +38,13 @@ details.code-details summary:hover {
 }
 
 /* Ensure pre (block) code doesn't have the inline red style */
+pre {
+    max-width: 100%;
+    overflow-x: auto;
+    border-radius: 6px;
+    /* Optional UI polish */
+}
+
 pre code {
     background-color: transparent !important;
     color: inherit !important;
@@ -48,6 +55,7 @@ pre code {
 .hljs {
     display: block;
     overflow-x: auto;
+    max-width: 100%;
     padding: 1em;
     color: #abb2bf;
     background: #282c34;
