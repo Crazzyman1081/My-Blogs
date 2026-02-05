@@ -7,13 +7,15 @@ import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
     const pathname = usePathname();
+    const basePath = process.env.NODE_ENV === 'production' ? '/My-Blogs' : '';
 
     return (
         <aside className={styles.sidebar}>
             <div className={styles.profile}>
                 <div className={styles.avatarContainer}>
                     <img
-                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/pfp.jpg`}
+                        src={`${basePath}/pfp.jpg`}
+                        alt="Shona"
                         className={styles.avatar}
                     />
                 </div>

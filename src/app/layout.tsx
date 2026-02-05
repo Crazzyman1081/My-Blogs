@@ -5,12 +5,13 @@ import "./code-styles.css";
 import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
+const basePath = process.env.NODE_ENV === 'production' ? '/My-Blogs' : '';
 
 export const metadata: Metadata = {
   title: "CTF Writeups",
   description: "Reverse Engineering & CTF Writeups",
   icons: {
-    icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/pfp.jpg`,
+    icon: `${basePath}/pfp.jpg`,
   },
 };
 
@@ -31,7 +32,7 @@ export default function RootLayout({
           <div
             className="vine-diagonal"
             style={{
-              backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH || ''}/vine.png')`
+              backgroundImage: `url('${basePath}/vine.png')`
             }}
           ></div>
         </div>
