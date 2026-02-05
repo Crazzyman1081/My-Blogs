@@ -28,7 +28,12 @@ export default function RootLayout({
             {children}
           </main>
           {/* Global Diagonal Vine */}
-          <div className="vine-diagonal"></div>
+          <div
+            className="vine-diagonal"
+            style={{
+              backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH || ''}/vine.png')`
+            }}
+          ></div>
         </div>
       </body>
     </html>

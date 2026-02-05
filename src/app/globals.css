@@ -93,10 +93,11 @@ h6 {
   /* Adjust Y-axis location */
   bottom: 0;
   /* Adjust Size of the pattern */
+  /* width: 400px; */
   width: 400px;
   /* Adjust width for a nice vertical strip */
   height: 100vh;
-  background-image: url('/vine.png');
+  /* background-image moved to inline style in layout.tsx for base path support */
   background-repeat: repeat-y;
   background-size: contain;
   background-position: top center;
