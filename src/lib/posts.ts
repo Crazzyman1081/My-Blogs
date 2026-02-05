@@ -126,10 +126,11 @@ export async function getPostData(slug: string): Promise<PostData> {
     // Rewrite relative image paths to include the folder path
     const relativeFolder = path.relative(postsDirectory, path.dirname(file)).replace(/\\/g, '/');
     const folderPrefix = relativeFolder ? `/posts/${relativeFolder}/` : '/posts/';
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
     contentHtml = contentHtml.replace(/src="([^"]+)"/g, (match, src) => {
         if (!src.startsWith('http') && !src.startsWith('/')) {
-            return `src="${folderPrefix}${src}"`;
+            return `src="${basePath}${folderPrefix}${src}"`;
         }
         return match;
     });
