@@ -1,0 +1,124 @@
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    /* Content + TOC */
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mainContent {
+    min-width: 0;
+    /* Prevent grid blowout */
+}
+
+.sidebar {
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+        /* Hide TOC on smaller screens for now */
+    }
+}
+
+.container {
+    max-width: 850px;
+    margin: 0;
+    position: relative;
+    /* Context */
+    overflow: hidden;
+    /* Prevent overflow of vines */
+    padding-top: 2rem;
+    /* Give space */
+}
+
+.topVine {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 300px;
+    transform: rotate(15deg);
+    z-index: 0;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: var(--text-header);
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    color: var(--text-main);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+}
+
+.content {
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.content h1,
+.content h2,
+.content h3 {
+    margin-top: 2rem;
+}
+
+.content a {
+    color: var(--info);
+    /* Make links distinct blue */
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    /* Reserve space */
+    transition: all 0.2s ease;
+}
+
+.content a:hover {
+    filter: brightness(1.2);
+    border-bottom: 1px dotted var(--info);
+    /* Subtle cue */
+}
+
+.vineWrapper {
+    margin-top: 1rem;
+    width: 100%;
+    min-height: 100%;
+    /* Fill available space */
+    opacity: 0.6;
+    /* Brighter */
+    overflow: visible;
+    flex: 1;
+}
+
+.content blockquote {
+    border-left: 4px solid var(--accent);
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    font-style: italic;
+    color: var(--text-header);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
