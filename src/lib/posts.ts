@@ -40,13 +40,15 @@ export interface PostData {
     id: string;
     title: string;
     date: string;
+    description?: string;
+    excerpt?: string;
     contentHtml?: string;
     headings?: { id: string; text: string; level: number }[];
-    coverImage?: string; // Added coverImage
+    coverImage?: string;
     [key: string]: any;
 }
 
-export function getAllPostIds() {
+export function getSortedPostsData(): PostData[] {
     if (!fs.existsSync(postsDirectory)) {
         return [];
     }
@@ -165,7 +167,7 @@ export async function getPostData(slug: string): Promise<PostData> {
     };
 }
 
-export function getSortedPostsData() {
+export function getSortedPostsData(): PostData[] {
     if (!fs.existsSync(postsDirectory)) {
         return [];
     }
